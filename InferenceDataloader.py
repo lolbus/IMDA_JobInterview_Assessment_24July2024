@@ -23,7 +23,7 @@ class dataloader(object):
                         # Store the image path and label in the dictionary
                         data_dict[img_path] = label
                         data_loaded += 1
-                        print(f"Pairing {filename} with {txt_filename}")
+                        # print(f"Pairing {filename} with {txt_filename}")
                         if data_loaded == training_size:
                             break
         self.data_dict = data_dict
