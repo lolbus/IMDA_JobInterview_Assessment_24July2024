@@ -70,7 +70,7 @@ load_image_chain = TransformChain(
 def image_model(inputs: dict) -> str:
     """Invoke model with image and prompt."""
     model = llm_agent.llm
-    print("Final vision prompt\n", inputs["prompt"])
+    # print("Final vision prompt\n", inputs["prompt"])
     msg = model.invoke(
              [SystemMessage(content=llm_agent.format_instruction),
               HumanMessage(
