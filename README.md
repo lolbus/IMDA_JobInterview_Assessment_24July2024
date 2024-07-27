@@ -21,14 +21,14 @@ To run the **final solution**, follow these steps:
 1. Open the **main_AssessmentUsage_showcase.ipynb** using Jupyter Notebook
 2. Run the cells in the notebook sequentially to execute the code.
 
-or, run the following python command after navigating to the project directory:
+or, run the following python command after navigating to the project directory **Best preferred solution**:
 
     openai_api_key = "<OPENAI_APY_KEY>"
     from CaptchaClass import Captcha
     Captcha_inferencer = Captcha(strategy = "Collaborative-WORB", openai_api_key=openai_api_key)
     Captcha_inferencer(r".\sampleCaptchas\input\input100.jpg", save_path = ".\sample_input100.txt")
 
-or, if without **OpenAI API key**, run the less robust solution, with the following python command after navigating to the project directory:
+or, if without **OpenAI API key**, run the less robust solution, with the following python command after navigating to the project directory **Second choice solution**:
 
     from CaptchaClass import Captcha
     Captcha_inferencer = Captcha(strategy = "PytorchCNN-WORB")
@@ -73,7 +73,7 @@ During the training phase, first a PyTorch model was trained like in **Method 2*
 As the dataset provided was already extremely sparse, selectively using only the most relevant data to fine-tune, result in very negligible to the model, and there are no obvious indication, that
 the model improved from utilizing the transfer-learning principle.
 
-### 5.PyTorch model self trained model with White OR Black pixels conversion
+### 5.PyTorch model self trained model with White OR Black pixels conversion **(Second choice)**
 This method uses a newly developed function to preprocess the image data before inference with or training of a PytorchCNN model. The function was developed by rounding all pixels below 128 to 0 and all pixels above 128 to 255.
 However the robustness of the function may be uncertain as the conversion method was applied and evaluated on a tiny dataset. 
 Even though it is possible to infer the entire dataset (combination of sparse amount of seen/unseen images), I would not certain enough trust the model completely for deployment. 
