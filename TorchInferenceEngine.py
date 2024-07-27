@@ -45,12 +45,16 @@ class load_torch_ai_model(object):
         torch_model.eval()
         self.torch_model = torch_model
 
-    def get_image_information(self, im_path:str)->dict:
-        """Main inference caller
-        args: im_path:str
-        output: dict containing inference result:dict"""
-        image = Image.open(im_path)
-        image_char_list = crop_image_and_return_5char(image, coordinates)
+    def get_image_information(self, image_path)->dict:
+        """
+        Main inference caller
+        args: 
+            input_path: str
+        output: 
+            dict containing inference result:dict
+        """
+        input_image = Image.open(image_path)
+        image_char_list = crop_image_and_return_5char(input_image, coordinates)
         inference_result = {'InferredCharacters':""}
         for image_char in image_char_list:
             transformed_image_char = torch_transform(image_char.convert('L'))

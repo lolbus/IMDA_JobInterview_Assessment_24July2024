@@ -22,7 +22,7 @@ class SimpleCNNArchitecture(nn.Module):
         x = self.fc2(x)
         return x
 
-mean, std = 0.6455, 0.4215
+mean, std = 0.6701, 0.4443
 torch_transform = transforms.Compose([
     transforms.ToTensor(),
     transforms.Normalize(mean, std)
