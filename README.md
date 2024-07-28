@@ -48,7 +48,7 @@ Available Strategies:
 
 ### 1.OpenAI GPT4o AI Assistant
 This is the first draft of my solution. It uses a LLM AI Assistant. In this example, we pick GPT-4o which is the most powerful publicly available LLM available for the public. 
-GPT-4o is integrated with a ViT model for vision task. The ViT model was trained on a huge dataset and is capable of handle a wide range of classification tasks, including the relevant one in this assessment without any fine-tunning.
+GPT-4o is very likely integrated with a ViT model for vision task. The ViT model was trained on a huge dataset and is capable of handle a wide range of classification tasks, including the relevant one in this assessment without any fine-tunning.
 Unfortunately, it struggles to tell the difference between "O", "0", "1", "I" for this specific captcha image's font. Incorporating few-shot prompting by prompt engineering didn't help much either. 
 This solution is good as it does not requires AI expertise to incorporates, any decently experienced Software Engineer may use the high-level GenAI frameworks available as of July 2024 to incorporate the method as part of the solution with best use practice.
 However developer must top up credits in their OpenAI account and provide an OpenAI API key that will continuously bill the account for usage. The cost can be moderated by using a cheaper and weaker model if use case allows.
