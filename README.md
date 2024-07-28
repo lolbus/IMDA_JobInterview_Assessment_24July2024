@@ -8,7 +8,7 @@ To install the necessary packages, run the following pip command in a **Python 3
     pip install pillow
     pip3 install torch torchvision torchaudio
 
-You must also attain an **OpenAI API key** for some of the solutions that uses OpenAI's LLM to infer the Captcha image. 
+You must also attain an **OpenAI API key** for some of the solutions that use OpenAI's LLM to infer the Captcha image. 
 
 ## How to run the final solutions
 To setup the project, follow these steps:
@@ -34,7 +34,7 @@ or, if without **OpenAI API key**, run the less robust solution, with the follow
     Captcha_inferencer = Captcha(strategy = "PytorchCNN-WORB")
     Captcha_inferencer(r".\sampleCaptchas\input\input100.jpg", save_path = ".\sample_input100.txt")
 
-You may set the strategy to a **non final** one which are all relevant iterative steps to achieve the **final solution**. Available strategies,
+You may set the strategy to a **non final** one which are also relevant iterative steps to achieve the **final solution**. Available strategies,
 
 Available Strategies:
 1. OpenAI GPT4o AI Assistant (Requires OpenAI API Key:Yes) - ```LLMAIAssistant```
@@ -51,11 +51,11 @@ This is the first draft of my solution. It uses a LLM AI Assistant. In this exam
 GPT-4o is integrated with a ViT model for vision task. The ViT model was trained on a huge dataset and is capable of handle a wide range of classification tasks, including the relevant one in this assessment without any fine-tunning.
 Unfortunately, it struggles to tell the difference between "O", "0", "1", "I" for this specific captcha image's font. Incorporating few-shot prompting by prompt engineering didn't help much either. 
 This solution is good as it does not requires AI expertise to incorporates, any decently experienced Software Engineer may use the high-level GenAI frameworks available as of July 2024 to incorporate the method as part of the solution with best use practice.
-However developer must top up credits in their OpenAI account and provide an OpenAI API key that will continuously bill the account for usage. The cost can be moderated by using a cheaper and weak model if use case allows.
+However developer must top up credits in their OpenAI account and provide an OpenAI API key that will continuously bill the account for usage. The cost can be moderated by using a cheaper and weaker model if use case allows.
 
 ### 2.PyTorch model self trained model
-This is the second draft of my solution. It uses a self-trained SimpleCNN model that crop images into 5 equal parts containing the characters to infer, and infer the character sequentially as a multi-class classification task. 
-This method may not work if the characters in the unseen Captcha images are skewed, distorted, displaced differently as the cropping method used might not be able to handle. 
+This is the second draft of my solution. It uses a self-trained SimpleCNN model that grayscale the image, crop images into 5 equal parts containing the characters to infer, and infer the character sequentially as a multi-class classification task. 
+This method may not work if the characters in the unseen Captcha images are skewed, distorted, displaced even a little differently as the cropping method used might not be able to handle. 
 This method uses the tiny dataset (25 instances of Captcha images) provided to train a CNN model, it is able to handle the difference between "O", "0", "1", "I" easily, thanks to the short range dependency mechanism of CNN model to pay attention to edge details of the character. 
 But some obvious characters like Y gets mistaken as V sometimes, even though from distance, any person can tell the difference of the 2 characters. This performance issue may be solved if a bigger dataset is provided. 
 Since it is able to handle the characters which the ViT incorporated inside GPT4o failed, in strategy 3, and 4, collaboration methods was developed, leveraging the more robust ViT Transformer model and the leanly trained CNN model for special specific case to work together.
