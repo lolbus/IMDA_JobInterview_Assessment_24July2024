@@ -68,13 +68,13 @@ if an illegal character is found on a specific position, the output of the Pytor
 All other acceptable characters inferred by the AI Assistant will take credit from the AI Assistant's inference.
 
 ### 4.Pytorch model trained as O, 0, 1, I 4-class Discriminator + OpenAI GPT4o AI Assistant Collaboration
-This is the last draft made. Like 3., it collaborates the 2 model developed in **Method 1** and **Method 2** The key difference would be this strategy uses a more advanced methodology to train the PyTorch model.
+This is the forth draft made. Like 3., it collaborates the 2 model developed in **Method 1** and **Method 2** The key difference would be this strategy uses a more advanced methodology to train the PyTorch model.
 During the training phase, first a PyTorch model was trained like in **Method 2**, then the model was loaded as pre-trained model onto another PyTorch trainer, and fine-tune on a character dataset compromises of ['0', 'O', '1', 'I'] characters.
 As the dataset provided was already extremely sparse, selectively using only the most relevant data to fine-tune, result in very negligible to the model, and there are no obvious indication, that
 the model improved from utilizing the transfer-learning principle.
 
 ### 5.PyTorch model self trained model with White OR Black pixels conversion **(Second choice)**
-This method uses a newly developed function to preprocess the image data before inference with or training of a PytorchCNN model. The function was developed by rounding all pixels below 128 to 0 and all pixels above 128 to 255.
+This is the 5th draft of the solution. This method uses a newly developed function to preprocess the image data before inference with or training of a PytorchCNN model. The function was developed by rounding all pixels below 128 to 0 and all pixels above 128 to 255.
 However the robustness of the function may be uncertain as the conversion method was applied and evaluated on a tiny dataset. 
 Even though it is possible to infer the entire dataset (combination of sparse amount of seen/unseen images), I would not certain enough trust the model completely for deployment. 
 However if the developed image conversion function works, then the nature of problem has been simplified significantly for a Simple CNN to solve. 
@@ -85,7 +85,7 @@ Everything else is the same as in **Method 2**.
 <img src="https://raw.githubusercontent.com/lolbus/IMDA_JobInterview_Assessment_24July2024/main/WORB_effect.PNG" alt="Demo of WORB conversion.png" border="1" /><br>
 
 ### 6.Pytorch model self trained model with White OR Black pixels conversion + OpenAI GPT4o AI Assistant Collaboration **(Best, favourite chosen final solution)**
-This method uses the PyTorch model developed in **Method 5** to infer 'O', '0', '1', 'I' like the case **Method 3** uses **Method 2**. 
+This is the final draft solution. This method uses the PyTorch model developed in **Method 5** to infer 'O', '0', '1', 'I' like the case **Method 3** uses **Method 2**. 
 As the most of the inferences rely on the huge ViT model in-built within GPT-4o, this is the more trustable model relative to **Method 5.** after greatly simplifying the solution.
 
 ## Strengths and Weaknesses of each strategy
